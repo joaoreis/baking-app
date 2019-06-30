@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
-    package="br.com.joaoreis.bakingapp" >
+    package="br.com.joaoreis.bakingapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <dist:module dist:instant="true" />
 
     <application
@@ -14,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".recipes.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

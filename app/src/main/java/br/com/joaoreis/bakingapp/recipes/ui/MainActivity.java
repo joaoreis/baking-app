@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean twoPane;
     private List<Recipe> recipeList = new ArrayList<>();
 
-
     private RecyclerView recyclerView;
     private RecipeAdapter recipeAdapter;
     private MainViewModel viewModel;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        recyclerView = binding.recipeList.findViewById(R.id.recipe_recyclerView);
+        recyclerView = (RecyclerView) binding.recipeList;
         recipeAdapter = new RecipeAdapter();
         recyclerView.setAdapter(recipeAdapter);
 

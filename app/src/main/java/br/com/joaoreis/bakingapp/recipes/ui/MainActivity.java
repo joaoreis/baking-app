@@ -1,10 +1,11 @@
 package br.com.joaoreis.bakingapp.recipes.ui;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,21 +31,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        setSupportActionBar(binding.toolbar);
+        binding.toolbar.setTitle(getTitle());
+
+        setupRecyclerView(binding);
+        setupViewModel();
+    }
+
+    private void setupRecyclerView(ActivityMainBinding binding) {
         recyclerView = (RecyclerView) binding.recipeList;
         recipeAdapter = new RecipeAdapter();
+        recipeAdapter.setOnItemClickListener(position ->
+                Toast.makeText(MainActivity.this, "clicou em: " + position.getName(), Toast.LENGTH_SHORT).show());
         recyclerView.setAdapter(recipeAdapter);
-
-        setupViewModel();
     }
 
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        viewModel.getRecipes().observe(this, new Observer<List<Recipe>>() {
-            @Override
-            public void onChanged(List<Recipe> recipes) {
-                    recipeAdapter.setRecipes(recipes);
-            }
-        });
+        viewModel.getRecipes().observe(this, recipes -> recipeAdapter.setRecipes(recipes));
 
     }
 }

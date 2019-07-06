@@ -17,11 +17,16 @@ import br.com.joaoreis.bakingapp.service.models.Recipe;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    List<Recipe> recipes = new ArrayList<>();
+    private List<Recipe> recipes = new ArrayList<>();
+    private OnRecipeItemClickListener listener;
 
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(OnRecipeItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -55,22 +60,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         private RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             recipeTitle = itemView.findViewById(R.id.recipe_title);
-        }
-    }
-}
-/*private ImageView moviePoster;
-
-        public MovieAdapterViewHolder(@NonNull final View itemView) {
-            super(itemView);
-            moviePoster = itemView.findViewById(R.id.iv_movie_poster);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (listener != null && position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(movies.get(position));
-                    }
+            itemView.setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(recipes.get(position));
                 }
             });
-        }*/
+        }
+
+    }
+}

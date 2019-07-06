@@ -4,21 +4,25 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.joaoreis.bakingapp.R;
-import br.com.joaoreis.bakingapp.databinding.RecipeContentBinding;
 import br.com.joaoreis.bakingapp.service.models.Recipe;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     List<Recipe> recipes = new ArrayList<>();
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -35,11 +39,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
 
-        RecipeContentBinding binding = holder.binding;
         String recipeTitle = recipes.get(position).getName();
-        binding.recipeTitle.setText(recipeTitle);
-        binding.executePendingBindings();
-
+        holder.recipeTitle.setText(recipeTitle);
     }
 
     @Override
@@ -49,11 +50,27 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     class RecipeViewHolder extends RecyclerView.ViewHolder {
 
-        private RecipeContentBinding binding;
+        private TextView recipeTitle;
 
         private RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            binding = DataBindingUtil.bind(itemView);
+            recipeTitle = itemView.findViewById(R.id.recipe_title);
         }
     }
 }
+/*private ImageView moviePoster;
+
+        public MovieAdapterViewHolder(@NonNull final View itemView) {
+            super(itemView);
+            moviePoster = itemView.findViewById(R.id.iv_movie_poster);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(movies.get(position));
+                    }
+                }
+            });
+        }*/

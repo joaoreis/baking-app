@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,7 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        viewModel.getRecipes().observe(this, recipes -> recipeList = recipes);
+        viewModel.getRecipes().observe(this, new Observer<List<Recipe>>() {
+            @Override
+            public void onChanged(List<Recipe> recipes) {
+                    recipeAdapter.setRecipes(recipes);
+            }
+        });
 
     }
 }

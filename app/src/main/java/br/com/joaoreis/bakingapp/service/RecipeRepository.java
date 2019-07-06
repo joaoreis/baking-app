@@ -26,9 +26,9 @@ public class RecipeRepository {
 
         @Override
         public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
-            if (response.isSuccessful() && response.body() != null) {
+//            if (response.isSuccessful() && response.body() != null) {
                 recipes.postValue(response.body());
-            }
+//            }
         }
 
         @Override

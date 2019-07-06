@@ -15,6 +15,7 @@ import java.util.List;
 
 import br.com.joaoreis.bakingapp.R;
 import br.com.joaoreis.bakingapp.databinding.ActivityMainBinding;
+import br.com.joaoreis.bakingapp.recipes.ui.adapters.RecipeAdapter;
 import br.com.joaoreis.bakingapp.recipes.viewmodel.MainViewModel;
 import br.com.joaoreis.bakingapp.service.models.Recipe;
 

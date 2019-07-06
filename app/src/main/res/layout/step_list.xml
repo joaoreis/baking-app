@@ -10,6 +10,7 @@
 
     <androidx.cardview.widget.CardView
         style="@style/CardView.Recipe"
+        android:id="@+id/ingredients"
         android:layout_width="match_parent"
         android:minHeight="@dimen/min_height"
         android:layout_height="wrap_content">

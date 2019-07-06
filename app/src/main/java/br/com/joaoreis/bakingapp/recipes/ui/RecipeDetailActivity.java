@@ -1,14 +1,17 @@
 package br.com.joaoreis.bakingapp.recipes.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import br.com.joaoreis.bakingapp.R;
+import br.com.joaoreis.bakingapp.recipes.ui.adapters.StepAdapter;
 import br.com.joaoreis.bakingapp.recipes.viewmodel.RecipeDetailViewModel;
 import br.com.joaoreis.bakingapp.service.models.Recipe;
 
@@ -16,9 +19,11 @@ import static br.com.joaoreis.bakingapp.recipes.ui.RecipeDetailFragment.EXTRA_RE
 
 public class RecipeDetailActivity extends AppCompatActivity {
 
+    public static final String EXTRA_INGREDIENTS = "ingredients";
     private boolean twoPane;
     private Recipe recipe;
     private RecyclerView recyclerView;
+    private CardView ingredients;
     private StepAdapter stepAdapter;
     private RecipeDetailViewModel viewModel;
 
@@ -36,8 +41,22 @@ public class RecipeDetailActivity extends AppCompatActivity {
         Intent callingIntent = getIntent();
         Bundle extras = callingIntent.getExtras();
         recipe = extras.getParcelable(EXTRA_RECIPE);
+        setupIngredients();
         setupRecyclerView();
         setupViewModel();
+    }
+
+    private void setupIngredients() {
+        ingredients = findViewById(R.id.ingredients);
+        ingredients.setOnClickListener(v -> {
+            Context context = RecipeDetailActivity.this;
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(EXTRA_INGREDIENTS, recipe);
+            Intent intent = new Intent(context, IngredientFragment.class);
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+
+        });
     }
 
     private void setupRecyclerView() {

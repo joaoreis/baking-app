@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.ui;
+package br.com.joaoreis.bakingapp.recipes.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.joaoreis.bakingapp.R;
+import br.com.joaoreis.bakingapp.recipes.ui.listeners.OnStepClickListener;
 import br.com.joaoreis.bakingapp.service.models.Step;
 
 public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder> {
     private boolean twoPane;
     private List<Step> steps = new ArrayList<>();
-    private  OnStepClickListener listener;
+    private OnStepClickListener listener;
 
     public StepAdapter(boolean twoPane) {
         this.twoPane = twoPane;
@@ -33,11 +34,9 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         this.listener = listener;
     }
 
-
     @NonNull
     @Override
     public StepViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
 
         Context context = parent.getContext();
         int layoutId = R.layout.step_content;
@@ -59,7 +58,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     }
 
 
-    public class StepViewHolder extends RecyclerView.ViewHolder{
+    class StepViewHolder extends RecyclerView.ViewHolder{
 
         private TextView stepTitle;
 

@@ -13,27 +13,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.joaoreis.bakingapp.R;
-import br.com.joaoreis.bakingapp.recipes.viewmodel.RecipeListViewModel;
+import br.com.joaoreis.bakingapp.recipes.viewmodel.RecipeDetailViewModel;
 
-public class RecipeListFragment extends Fragment {
+public class RecipeDetailFragment extends Fragment {
 
-    private RecipeListViewModel mViewModel;
+    public static final String EXTRA_RECIPE = "recipe";
+    private RecipeDetailViewModel mViewModel;
 
-    public static RecipeListFragment newInstance() {
-        return new RecipeListFragment();
+    public static RecipeDetailFragment newInstance() {
+        return new RecipeDetailFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.recipe_list, container, false);
+        return inflater.inflate(R.layout.recipe_detail_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(RecipeListViewModel.class);
-        // TODO: Use the ViewModel
+        mViewModel = ViewModelProviders.of(this).get(RecipeDetailViewModel.class);
     }
 
 }

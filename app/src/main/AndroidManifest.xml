@@ -5,6 +5,7 @@
     package="br.com.joaoreis.bakingapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <dist:module dist:instant="true" />
 
     <application
@@ -15,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".recipes.ui.RecipeDetailActivity"
+            android:parentActivityName=".recipes.ui.MainActivity" />
         <activity
             android:name=".recipes.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

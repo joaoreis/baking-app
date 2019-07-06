@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
@@ -7,9 +8,11 @@
 
     <TextView
         style="@style/CardView.Recipe.Text"
-        android:id="@+id/recipe_title"
+        android:id="@+id/step_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Recipe Title" />
+        android:textSize="@dimen/step_title"
+        android:textAlignment="center"
+        tools:text="Step Title" />
 
 </androidx.cardview.widget.CardView>

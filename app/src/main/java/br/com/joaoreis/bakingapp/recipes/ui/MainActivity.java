@@ -1,10 +1,11 @@
 package br.com.joaoreis.bakingapp.recipes.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,8 @@ import br.com.joaoreis.bakingapp.R;
 import br.com.joaoreis.bakingapp.databinding.ActivityMainBinding;
 import br.com.joaoreis.bakingapp.recipes.viewmodel.MainViewModel;
 import br.com.joaoreis.bakingapp.service.models.Recipe;
+
+import static br.com.joaoreis.bakingapp.recipes.ui.RecipeDetailFragment.EXTRA_RECIPE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,10 +51,24 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             recyclerView = (RecyclerView) binding.recipeListLayout;
+
         }
-        recipeAdapter = new RecipeAdapter();
-        recipeAdapter.setOnItemClickListener(position ->
-                Toast.makeText(MainActivity.this, "clicou em: " + position.getName(), Toast.LENGTH_SHORT).show());
+        assert recyclerView != null;
+        recipeAdapter = new RecipeAdapter(twoPane);
+        recipeAdapter.setOnItemClickListener(recipe ->
+        {
+            if (twoPane) {
+                Toast.makeText(MainActivity.this, "clicou em: " + recipe.getName(), Toast.LENGTH_SHORT).show();
+            } else {
+                Context context = MainActivity.this;
+                Toast.makeText(context, "clicou em: " + recipe.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, RecipeDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(EXTRA_RECIPE,recipe);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(recipeAdapter);
     }
 

@@ -3,13 +3,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".recipes.ui.MainActivity">
+    tools:context=".recipes.ui.RecipeDetailActivity">
 
     <data>
 
         <variable
             name="viewModel"
-            type="br.com.joaoreis.bakingapp.recipes.viewmodel.MainViewModel" />
+            type="br.com.joaoreis.bakingapp.recipes.viewmodel.RecipeDetailViewModel" />
 
     </data>
 
@@ -38,9 +38,8 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include
-                android:id="@+id/recipe_list_layout"
-                layout="@layout/recipe_list" />
+                android:id="@+id/step_list_layout"
+                layout="@layout/step_list" />
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
-

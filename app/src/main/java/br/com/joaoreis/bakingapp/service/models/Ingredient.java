@@ -9,7 +9,7 @@ import com.squareup.moshi.Json;
 public class Ingredient implements Parcelable {
 
     @Json(name = "quantity")
-    private int quantity;
+    private double quantity;
 
     @Json(name = "measure")
     private String measure;
@@ -36,11 +36,11 @@ public class Ingredient implements Parcelable {
         this.name = in.readString();
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

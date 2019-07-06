@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:elevation="@dimen/elevation"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/cardBackground">
 
-    <data>
+    <TextView
+        android:id="@+id/recipe_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@{recipe.name}"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/card_title"
+        tools:text="Titulo Receita" />
 
-            <variable
-                name="recipe"
-                type="br.com.joaoreis.bakingapp.service.models.Recipe" />
-
-    </data>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="@dimen/elevation">
-
-        <TextView
-            android:id="@+id/recipe_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@{recipe.name}"
-            tools:text="Titulo Receita"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/card_title" />
-
-    </androidx.cardview.widget.CardView>
-</layout>
+</androidx.cardview.widget.CardView>

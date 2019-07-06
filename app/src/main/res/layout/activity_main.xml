@@ -37,7 +37,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <include
-                android:id="@+id/recipe_list"
+                android:id="@+id/recipe_list_layout"
                 layout="@layout/recipe_list" />
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

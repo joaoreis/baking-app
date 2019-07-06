@@ -34,12 +34,21 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         binding.toolbar.setTitle(getTitle());
 
+        if (findViewById(R.id.item_detail_container) != null) {
+            twoPane = true;
+        }
+
         setupRecyclerView(binding);
         setupViewModel();
     }
 
     private void setupRecyclerView(ActivityMainBinding binding) {
-        recyclerView = (RecyclerView) binding.recipeList;
+        if (twoPane) {
+            recyclerView = binding.recipeListLayout.findViewById(R.id.recipe_list);
+        }
+        else {
+            recyclerView = (RecyclerView) binding.recipeListLayout;
+        }
         recipeAdapter = new RecipeAdapter();
         recipeAdapter.setOnItemClickListener(position ->
                 Toast.makeText(MainActivity.this, "clicou em: " + position.getName(), Toast.LENGTH_SHORT).show());

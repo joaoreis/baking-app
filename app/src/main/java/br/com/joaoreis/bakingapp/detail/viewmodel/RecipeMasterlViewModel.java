@@ -1,10 +1,10 @@
-package br.com.joaoreis.bakingapp.recipes.viewmodel;
+package br.com.joaoreis.bakingapp.detail.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
 import br.com.joaoreis.bakingapp.service.models.Recipe;
 
-public class RecipeDetailViewModel extends ViewModel {
+public class RecipeMasterlViewModel extends ViewModel {
 
     private Recipe recipe;
 

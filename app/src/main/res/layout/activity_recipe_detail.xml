@@ -3,13 +3,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".recipes.ui.RecipeDetailActivity">
+    tools:context=".detail.ui.DetailMasterActivity">
 
     <data>
 
         <variable
             name="viewModel"
-            type="br.com.joaoreis.bakingapp.recipes.viewmodel.RecipeDetailViewModel" />
+            type="br.com.joaoreis.bakingapp.detail.viewmodel.RecipeMasterlViewModel" />
 
     </data>
 
@@ -17,18 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:titleTextColor="@color/white" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
             android:id="@+id/frameLayout"

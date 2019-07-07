@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.ui;
+package br.com.joaoreis.bakingapp.detail.ui;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
@@ -25,10 +24,10 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 import br.com.joaoreis.bakingapp.R;
-import br.com.joaoreis.bakingapp.recipes.viewmodel.StepViewModel;
+import br.com.joaoreis.bakingapp.detail.viewmodel.StepViewModel;
 import br.com.joaoreis.bakingapp.service.models.Step;
 
-public class StepFragment extends Fragment implements ProgressiveMediaSource.SourceInfoRefreshListener {
+public class StepFragment extends Fragment {
 
     private Step step;
     private TextView stepDescription;
@@ -44,8 +43,6 @@ public class StepFragment extends Fragment implements ProgressiveMediaSource.Sou
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.step_fragment, container, false);
-
-
         initializeViews(view);
         initializePlayer(view);
         return view;
@@ -94,11 +91,6 @@ public class StepFragment extends Fragment implements ProgressiveMediaSource.Sou
             exoPlayer.prepare(mediaSource);
             exoPlayer.setPlayWhenReady(true);
         }
-    }
-
-    @Override
-    public void onSourceInfoRefreshed(MediaSource source, Timeline timeline, @Nullable Object manifest) {
-
     }
 
     private void releasePlayer() {

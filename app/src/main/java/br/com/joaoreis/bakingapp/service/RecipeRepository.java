@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import br.com.joaoreis.bakingapp.service.models.Recipe;
-import br.com.joaoreis.bakingapp.service.models.Step;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +28,7 @@ public class RecipeRepository {
         @Override
         public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
 //            if (response.isSuccessful() && response.body() != null) {
-                recipes.postValue(response.body());
+            recipes.postValue(response.body());
 //            }
         }
 

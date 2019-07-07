@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.ui;
+package br.com.joaoreis.bakingapp.detail.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Objects;
 
 import br.com.joaoreis.bakingapp.R;
 import br.com.joaoreis.bakingapp.service.models.Ingredient;
@@ -21,8 +23,7 @@ public class IngredientFragment extends Fragment {
     private IngredientAdapter ingredientAdapter;
     private List<Ingredient> ingredients;
 
-    public IngredientFragment(IngredientAdapter ingredientAdapter, List<Ingredient> ingredients) {
-        this.ingredientAdapter = ingredientAdapter;
+    public IngredientFragment(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -35,9 +36,11 @@ public class IngredientFragment extends Fragment {
     }
 
     private void setupViews(View ingredientView) {
-        recyclerView = ingredientView.findViewById(R.id.ingredient_recycler_view);
+        ingredientAdapter = new IngredientAdapter();
         ingredientAdapter.setIngredients(ingredients);
+        recyclerView = ingredientView.findViewById(R.id.ingredient_recycler_view);
         recyclerView.setAdapter(ingredientAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL));
     }
 
 }

@@ -1,4 +1,3 @@
-
 package br.com.joaoreis.bakingapp.service.models;
 
 import android.os.Parcel;
@@ -7,30 +6,6 @@ import android.os.Parcelable;
 import com.squareup.moshi.Json;
 
 public class Step implements Parcelable {
-
-    @Json(name = "id")
-    private int id;
-
-    @Json(name = "shortDescription")
-    private String shortDescription;
-
-    @Json(name = "description")
-    private String description;
-
-    @Json(name = "videoURL")
-    private String videoURL;
-
-    @Json(name = "thumbnailURL")
-    private String thumbnailURL;
-
-
-    protected Step(Parcel in) {
-        id = in.readInt();
-        shortDescription = in.readString();
-        description = in.readString();
-        videoURL = in.readString();
-        thumbnailURL = in.readString();
-    }
 
     public static final Creator<Step> CREATOR = new Creator<Step>() {
         @Override
@@ -43,6 +18,24 @@ public class Step implements Parcelable {
             return new Step[size];
         }
     };
+    @Json(name = "id")
+    private int id;
+    @Json(name = "shortDescription")
+    private String shortDescription;
+    @Json(name = "description")
+    private String description;
+    @Json(name = "videoURL")
+    private String videoURL;
+    @Json(name = "thumbnailURL")
+    private String thumbnailURL;
+
+    protected Step(Parcel in) {
+        id = in.readInt();
+        shortDescription = in.readString();
+        description = in.readString();
+        videoURL = in.readString();
+        thumbnailURL = in.readString();
+    }
 
     public int getId() {
         return id;

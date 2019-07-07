@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.ui.adapters;
+package br.com.joaoreis.bakingapp.detail.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.joaoreis.bakingapp.R;
-import br.com.joaoreis.bakingapp.recipes.ui.listeners.OnStepClickListener;
 import br.com.joaoreis.bakingapp.service.models.Step;
 
 public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder> {
@@ -58,7 +57,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     }
 
 
-    class StepViewHolder extends RecyclerView.ViewHolder{
+    class StepViewHolder extends RecyclerView.ViewHolder {
 
         private TextView stepTitle;
 

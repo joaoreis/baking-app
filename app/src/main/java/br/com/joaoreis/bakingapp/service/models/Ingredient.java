@@ -1,4 +1,3 @@
-
 package br.com.joaoreis.bakingapp.service.models;
 
 import android.os.Parcel;
@@ -7,22 +6,6 @@ import android.os.Parcelable;
 import com.squareup.moshi.Json;
 
 public class Ingredient implements Parcelable {
-
-    @Json(name = "quantity")
-    private double quantity;
-
-    @Json(name = "measure")
-    private String measure;
-
-    @Json(name = "name")
-    private String name;
-
-
-    protected Ingredient(Parcel in) {
-        quantity = in.readDouble();
-        measure = in.readString();
-        name = in.readString();
-    }
 
     public static final Creator<Ingredient> CREATOR = new Creator<Ingredient>() {
         @Override
@@ -35,6 +18,18 @@ public class Ingredient implements Parcelable {
             return new Ingredient[size];
         }
     };
+    @Json(name = "quantity")
+    private double quantity;
+    @Json(name = "measure")
+    private String measure;
+    @Json(name = "ingredient")
+    private String name;
+
+    protected Ingredient(Parcel in) {
+        quantity = in.readDouble();
+        measure = in.readString();
+        name = in.readString();
+    }
 
     public double getQuantity() {
         return quantity;

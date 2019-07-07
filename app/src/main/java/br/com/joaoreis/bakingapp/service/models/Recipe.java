@@ -1,4 +1,3 @@
-
 package br.com.joaoreis.bakingapp.service.models;
 
 import android.os.Parcel;
@@ -11,34 +10,6 @@ import java.util.List;
 
 public class Recipe implements Parcelable {
 
-    @Json(name = "id")
-    private int id;
-
-    @Json(name = "name")
-    private String name;
-
-    @Json(name = "ingredients")
-    private List<Ingredient> ingredients = new ArrayList<>();
-
-    @Json(name = "steps")
-    private List<Step> steps = new ArrayList<>();
-
-    @Json(name = "servings")
-    private int servings;
-
-    @Json(name = "image")
-    private String image;
-
-
-    protected Recipe(Parcel in) {
-        id = in.readInt();
-        name = in.readString();
-        ingredients = in.createTypedArrayList(Ingredient.CREATOR);
-        steps = in.createTypedArrayList(Step.CREATOR);
-        servings = in.readInt();
-        image = in.readString();
-    }
-
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
         @Override
         public Recipe createFromParcel(Parcel in) {
@@ -50,6 +21,27 @@ public class Recipe implements Parcelable {
             return new Recipe[size];
         }
     };
+    @Json(name = "id")
+    private int id;
+    @Json(name = "name")
+    private String name;
+    @Json(name = "ingredients")
+    private List<Ingredient> ingredients = new ArrayList<>();
+    @Json(name = "steps")
+    private List<Step> steps = new ArrayList<>();
+    @Json(name = "servings")
+    private int servings;
+    @Json(name = "image")
+    private String image;
+
+    protected Recipe(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        ingredients = in.createTypedArrayList(Ingredient.CREATOR);
+        steps = in.createTypedArrayList(Step.CREATOR);
+        servings = in.readInt();
+        image = in.readString();
+    }
 
     public int getId() {
         return id;

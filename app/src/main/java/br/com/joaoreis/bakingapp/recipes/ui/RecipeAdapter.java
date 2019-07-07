@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.ui.adapters;
+package br.com.joaoreis.bakingapp.recipes.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.joaoreis.bakingapp.R;
-import br.com.joaoreis.bakingapp.recipes.ui.listeners.OnRecipeItemClickListener;
 import br.com.joaoreis.bakingapp.service.models.Recipe;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
@@ -44,7 +43,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-
         String recipeTitle = recipes.get(position).getName();
         holder.recipeTitle.setText(recipeTitle);
     }

@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.ui.listeners;
+package br.com.joaoreis.bakingapp.detail.ui;
 
 import br.com.joaoreis.bakingapp.service.models.Step;
 

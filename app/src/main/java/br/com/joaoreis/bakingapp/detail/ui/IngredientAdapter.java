@@ -1,5 +1,7 @@
-package br.com.joaoreis.bakingapp.recipes.ui;
+package br.com.joaoreis.bakingapp.detail.ui;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,7 +27,12 @@ class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Ingredien
     @NonNull
     @Override
     public IngredientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        Context context = parent.getContext();
+        int layoutId = R.layout.ingredient_content;
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        View view = inflater.inflate(layoutId, parent, false);
+        return new IngredientViewHolder(view);
     }
 
     @Override

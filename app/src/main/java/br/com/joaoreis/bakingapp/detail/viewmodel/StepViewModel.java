@@ -1,4 +1,4 @@
-package br.com.joaoreis.bakingapp.recipes.viewmodel;
+package br.com.joaoreis.bakingapp.detail.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 

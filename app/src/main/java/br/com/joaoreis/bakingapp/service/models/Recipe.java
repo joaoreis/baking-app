@@ -1,4 +1,3 @@
-
 package br.com.joaoreis.bakingapp.service.models;
 
 import android.os.Parcel;
@@ -11,45 +10,38 @@ import java.util.List;
 
 public class Recipe implements Parcelable {
 
-    @Json(name = "id")
-    private int id;
-
-    @Json(name = "name")
-    private String name;
-
-    @Json(name = "ingredients")
-    private List<Ingredient> ingredients = new ArrayList<>();
-
-    @Json(name = "steps")
-    private List<Step> steps = new ArrayList<>();
-
-    @Json(name = "servings")
-    private int servings;
-
-    @Json(name = "image")
-    private String image;
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
-
-
+        @Override
         public Recipe createFromParcel(Parcel in) {
             return new Recipe(in);
         }
 
+        @Override
         public Recipe[] newArray(int size) {
-            return (new Recipe[size]);
+            return new Recipe[size];
         }
-
     };
+    @Json(name = "id")
+    private int id;
+    @Json(name = "name")
+    private String name;
+    @Json(name = "ingredients")
+    private List<Ingredient> ingredients = new ArrayList<>();
+    @Json(name = "steps")
+    private List<Step> steps = new ArrayList<>();
+    @Json(name = "servings")
+    private int servings;
+    @Json(name = "image")
+    private String image;
 
-    private Recipe(Parcel in) {
-        this.id = in.readInt();
-        this.name = in.readString();
-        in.readList(this.ingredients, Ingredient.class.getClassLoader());
-        in.readList(this.steps, Step.class.getClassLoader());
-        this.servings = in.readInt();
-        this.image = in.readString();
+    protected Recipe(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        ingredients = in.createTypedArrayList(Ingredient.CREATOR);
+        steps = in.createTypedArrayList(Step.CREATOR);
+        servings = in.readInt();
+        image = in.readString();
     }
-
 
     public int getId() {
         return id;
@@ -99,17 +91,19 @@ public class Recipe implements Parcelable {
         this.image = image;
     }
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(id);
-        dest.writeValue(name);
-        dest.writeList(ingredients);
-        dest.writeList(steps);
-        dest.writeValue(servings);
-        dest.writeValue(image);
-    }
 
+    @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeTypedList(ingredients);
+        dest.writeTypedList(steps);
+        dest.writeInt(servings);
+        dest.writeString(image);
+    }
 }

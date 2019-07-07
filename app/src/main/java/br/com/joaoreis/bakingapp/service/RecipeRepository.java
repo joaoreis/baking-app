@@ -22,12 +22,13 @@ public class RecipeRepository {
         return recipes;
     }
 
+
     class RecipeCallback implements Callback<List<Recipe>> {
 
         @Override
         public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
 //            if (response.isSuccessful() && response.body() != null) {
-                recipes.postValue(response.body());
+            recipes.postValue(response.body());
 //            }
         }
 

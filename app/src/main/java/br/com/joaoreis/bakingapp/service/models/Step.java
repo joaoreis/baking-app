@@ -1,4 +1,3 @@
-
 package br.com.joaoreis.bakingapp.service.models;
 
 import android.os.Parcel;
@@ -8,39 +7,34 @@ import com.squareup.moshi.Json;
 
 public class Step implements Parcelable {
 
-    @Json(name = "id")
-    private int id;
-
-    @Json(name = "shortDescription")
-    private String shortDescription;
-
-    @Json(name = "description")
-    private String description;
-
-    @Json(name = "videoURL")
-    private String videoURL;
-
-    @Json(name = "thumbnailURL")
-    private String thumbnailURL;
-
     public static final Creator<Step> CREATOR = new Creator<Step>() {
-
+        @Override
         public Step createFromParcel(Parcel in) {
             return new Step(in);
         }
 
+        @Override
         public Step[] newArray(int size) {
-            return (new Step[size]);
+            return new Step[size];
         }
-
     };
+    @Json(name = "id")
+    private int id;
+    @Json(name = "shortDescription")
+    private String shortDescription;
+    @Json(name = "description")
+    private String description;
+    @Json(name = "videoURL")
+    private String videoURL;
+    @Json(name = "thumbnailURL")
+    private String thumbnailURL;
 
-    private Step(Parcel in) {
-        this.id = in.readInt();
-        this.shortDescription = in.readString();
-        this.description = in.readString();
-        this.videoURL = in.readString();
-        this.thumbnailURL = in.readString();
+    protected Step(Parcel in) {
+        id = in.readInt();
+        shortDescription = in.readString();
+        description = in.readString();
+        videoURL = in.readString();
+        thumbnailURL = in.readString();
     }
 
     public int getId() {
@@ -83,16 +77,17 @@ public class Step implements Parcelable {
         this.thumbnailURL = thumbnailURL;
     }
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(id);
-        dest.writeValue(shortDescription);
-        dest.writeValue(description);
-        dest.writeValue(videoURL);
-        dest.writeValue(thumbnailURL);
-    }
-
+    @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(shortDescription);
+        dest.writeString(description);
+        dest.writeString(videoURL);
+        dest.writeString(thumbnailURL);
+    }
 }

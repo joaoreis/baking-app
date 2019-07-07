@@ -1,4 +1,3 @@
-
 package br.com.joaoreis.bakingapp.service.models;
 
 import android.os.Parcel;
@@ -8,32 +7,28 @@ import com.squareup.moshi.Json;
 
 public class Ingredient implements Parcelable {
 
-    @Json(name = "quantity")
-    private double quantity;
-
-    @Json(name = "measure")
-    private String measure;
-
-    @Json(name = "name")
-    private String name;
-
     public static final Creator<Ingredient> CREATOR = new Creator<Ingredient>() {
-
-
+        @Override
         public Ingredient createFromParcel(Parcel in) {
             return new Ingredient(in);
         }
 
+        @Override
         public Ingredient[] newArray(int size) {
-            return (new Ingredient[size]);
+            return new Ingredient[size];
         }
-
     };
+    @Json(name = "quantity")
+    private double quantity;
+    @Json(name = "measure")
+    private String measure;
+    @Json(name = "ingredient")
+    private String name;
 
-    private Ingredient(Parcel in) {
-        this.quantity = in.readInt();
-        this.measure = in.readString();
-        this.name = in.readString();
+    protected Ingredient(Parcel in) {
+        quantity = in.readDouble();
+        measure = in.readString();
+        name = in.readString();
     }
 
     public double getQuantity() {
@@ -60,14 +55,15 @@ public class Ingredient implements Parcelable {
         this.name = name;
     }
 
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(quantity);
-        dest.writeValue(measure);
-        dest.writeValue(name);
-    }
-
+    @Override
     public int describeContents() {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(quantity);
+        dest.writeString(measure);
+        dest.writeString(name);
+    }
 }

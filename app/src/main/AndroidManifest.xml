@@ -17,6 +17,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".recipes.ui.StepActivity"
+            android:parentActivityName=".recipes.ui.RecipeDetailActivity" />
+        <activity
             android:name=".recipes.ui.RecipeDetailActivity"
             android:parentActivityName=".recipes.ui.MainActivity" />
         <activity

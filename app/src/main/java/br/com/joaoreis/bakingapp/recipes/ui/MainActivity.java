@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupRecyclerView(ActivityMainBinding binding) {
         if (twoPane) {
             recyclerView = binding.recipeListLayout.findViewById(R.id.recipe_list);
-        }
-        else {
+        } else {
             recyclerView = (RecyclerView) binding.recipeListLayout;
 
         }
@@ -58,17 +57,15 @@ public class MainActivity extends AppCompatActivity {
         recipeAdapter = new RecipeAdapter(twoPane);
         recipeAdapter.setOnItemClickListener(recipe ->
         {
-            if (twoPane) {
-                Toast.makeText(MainActivity.this, "clicou em: " + recipe.getName(), Toast.LENGTH_SHORT).show();
-            } else {
-                Context context = MainActivity.this;
-                Toast.makeText(context, "clicou em: " + recipe.getName(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, RecipeDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(EXTRA_RECIPE,recipe);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
-            }
+
+            Context context = MainActivity.this;
+            Toast.makeText(context, "clicou em: " + recipe.getName(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, RecipeDetailActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(EXTRA_RECIPE, recipe);
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+
         });
         recyclerView.setAdapter(recipeAdapter);
     }

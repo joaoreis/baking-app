@@ -29,9 +29,10 @@
         <item name="android:textSize">@dimen/card_title</item>
     </style>
 
-    <style name="StepDescription">
+    <style name="IngredientDescription">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginTop">@dimen/vertical_margin</item>
     </style>
 
 </resources>

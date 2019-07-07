@@ -2,35 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/name"
+        style="@style/IngredientDescription"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/StepDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Step"/>
+        tools:text="Ingredient" />
 
     <TextView
         android:id="@+id/quantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/StepDescription"
+        style="@style/IngredientDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Step"/>
+        app:layout_constraintEnd_toStartOf="@id/measure"
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/measure"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/StepDescription"
+        style="@style/IngredientDescription"
+        android:layout_marginEnd="@dimen/horizontal_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Step"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="TSP" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

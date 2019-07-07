@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         assert recyclerView != null;
-        recipeAdapter = new RecipeAdapter(twoPane);
+        recipeAdapter = new RecipeAdapter();
         recipeAdapter.setOnItemClickListener(recipe ->
         {
 

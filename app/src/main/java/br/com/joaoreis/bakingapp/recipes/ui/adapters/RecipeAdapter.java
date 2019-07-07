@@ -18,13 +18,8 @@ import br.com.joaoreis.bakingapp.service.models.Recipe;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    private boolean twoPane;
     private List<Recipe> recipes = new ArrayList<>();
     private OnRecipeItemClickListener listener;
-
-    public RecipeAdapter(boolean twoPane) {
-        this.twoPane = twoPane;
-    }
 
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;

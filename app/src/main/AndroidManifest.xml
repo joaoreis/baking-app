@@ -20,7 +20,7 @@
         <service
             android:name="br.com.joaoreis.widget.WidgetIngredientService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-        <receiver android:name="br.com.joaoreis.widget.BakingWidgetProvider">
+        <receiver android:name="br.com.joaoreis.widget.IngredientWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

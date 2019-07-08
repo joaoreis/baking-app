@@ -6,6 +6,8 @@
 
     <TextView
         android:id="@+id/recipe_title"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="@dimen/step_title"
         style="@style/CardView.Recipe.Text"
         tools:text="Recipe"

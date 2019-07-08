@@ -20,6 +20,7 @@ import br.com.joaoreis.bakingapp.service.models.Ingredient;
 import br.com.joaoreis.bakingapp.service.models.Ingredients;
 import br.com.joaoreis.bakingapp.service.models.Recipe;
 import br.com.joaoreis.bakingapp.service.models.Step;
+import br.com.joaoreis.widget.IngredientWidgetProvider;
 
 import static br.com.joaoreis.bakingapp.Constants.EXTRA_INGREDIENTS;
 import static br.com.joaoreis.bakingapp.Constants.EXTRA_RECIPE;
@@ -47,10 +48,6 @@ public class DetailMasterActivity extends AppCompatActivity {
             twoPane = true;
         }
 
-        if (savedInstanceState != null) {
-            Log.d("DetailMaster", "onCreate: saved not null");
-        }
-
         Intent callingIntent = getIntent();
         Bundle extras = callingIntent.getExtras();
         if (extras != null) {
@@ -61,6 +58,7 @@ public class DetailMasterActivity extends AppCompatActivity {
         setupToolbar(recipe.getName());
         setupRecyclerView();
         setupIngredients();
+        IngredientWidgetProvider.sendRefreshBroadcast(this, recipe);
     }
 
     private void setupToolbar(String recipeName) {

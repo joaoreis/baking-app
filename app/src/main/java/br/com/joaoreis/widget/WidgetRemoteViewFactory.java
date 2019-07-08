@@ -16,7 +16,7 @@ public class WidgetRemoteViewFactory implements RemoteViewsService.RemoteViewsFa
 
     public WidgetRemoteViewFactory(Context context) {
         this.context = context;
-        ingredients = BakingWidgetProvider.getIngredients();
+        ingredients = IngredientWidgetProvider.getIngredients();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WidgetRemoteViewFactory implements RemoteViewsService.RemoteViewsFa
 
     @Override
     public void onDataSetChanged() {
-        ingredients = BakingWidgetProvider.getIngredients();
+        ingredients = IngredientWidgetProvider.getIngredients();
     }
 
     @Override

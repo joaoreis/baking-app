@@ -16,6 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <service
+            android:name="br.com.joaoreis.widget.WidgetIngredientService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <receiver android:name="br.com.joaoreis.widget.BakingWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/baking_widget_provider_info" />
+        </receiver>
+
         <activity
             android:name=".detail.ui.DetailActivity"
             android:parentActivityName=".detail.ui.DetailMasterActivity" />

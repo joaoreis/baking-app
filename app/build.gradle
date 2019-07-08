@@ -44,6 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation "android.arch.lifecycle:runtime:1.1.1"
@@ -60,10 +61,4 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.1'
     implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:2.10.1"
     implementation "com.google.android.exoplayer:exoplayer-ui:2.10.1"
-
-    //Dagger
-    implementation 'com.google.dagger:dagger:2.21'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
-    implementation 'androidx.navigation:navigation-fragment:2.0.0'
-    implementation 'androidx.navigation:navigation-ui:2.0.0'
 }

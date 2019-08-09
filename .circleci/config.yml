@@ -24,11 +24,30 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
       - run:
+          name: Setup emulator
+            command: |
+              sdkmanager "system-images;android-22;default;armeabi-v7a" && echo "no"
+              avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+      run:
+        name: Launch emulator
+        command: |
+          export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
+          emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+        background: true
+
+      - run:
           name: Run Tests and Lint
-          command: ./gradlew lint clean createDebugCoverageReport jacocoTestDebugUnitTestReport
+          command: |
+            ./gradlew clean
+            ./gradlew lint
+            ./gradlew jacocoTestDebugUnitTestReport
+            ./gradlew createDebugCoverageReport
           # clean testProdDebugUnitTest createProdDebugCoverageReport jacocoTestProdDebugUnitTestReport sonarqube -Dsonar.login=$SONAR_TOKEN
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/build/reports
+          path: |
+            app/build/jacoco/**
+            app/build/reports/**
+            app/build/test-results/**
           destination: reports
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/ 
           path: app/build/test-results # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples

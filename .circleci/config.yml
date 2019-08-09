@@ -1,11 +1,14 @@
-version: 2
+version: 2.1
+
 jobs:
   build:
     working_directory: ~/src
     docker:
       - image: circleci/android:api-28-alpha
     environment:
-      JVM_OPTS: -Xmx3200m
+      JVM_OPTS: -Xmx1536m
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+      TERM: dumb
     steps:
       - checkout
       - restore_cache:
@@ -21,8 +24,9 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
       - run:
-          name: Run Tests
-          command: ./gradlew lint tess
+          name: Run Tests and Lint
+          command: ./gradlew lint clean test createDebugCoverageReport jacocoTestDebugUnitTestReport
+          # clean testProdDebugUnitTest createProdDebugCoverageReport jacocoTestProdDebugUnitTestReport sonarqube -Dsonar.login=$SONAR_TOKEN
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: app/build/reports
           destination: reports
